@@ -19,6 +19,7 @@
     <header>
       <a href="highScore.html">Highscores</a>
       <div id="timer">Time: <span id="time">0</span></div>
+      <br />
     </header>
 
     <div class="jumbotron jumbotron-fluid">
@@ -39,14 +40,19 @@
 
     <!-- section for questions and choices -->
     <div class="quizSection">
-      <h2 id="questionDisplay">Question</h2>
+      <h2 id="questionDisplay"></h2>
+      <div id="ansChoices">
+        <button
+          type="button"
+          class="btn btn-secondary btn-lg btn-block"
+        ></button>
+      </div>
+      <div id="result"></div>
     </div>
-    <div id="ansChoices">
-      <button type="button" class="btn btn-secondary btn-lg btn-block"></button>
-    </div>
+    <br />
 
     <!-- high score -->
-    <div id="highScore">
+    <div id="highscore">
       <h2>All done!</h2>
       <h3>Your final score is <span id="finalScore">0</span></h3>
       <label for="initials-area">Enter initials:</label>
