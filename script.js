@@ -1,6 +1,6 @@
 // timer variables
 var currentQ = 0; //what question we're currently on //added later
-var time = queries.length * 15; //the length of time given to a question/taken
+var time = queries.length * 10; //the length of time given to a question/taken
 var timer; //the timer en general
 
 // ref variables
@@ -8,18 +8,18 @@ var startBtn = document.querySelector("#startBtn"); //start button
 var questionDisplay = document.querySelector("#questionDisplay"); //show question
 var ansChoices = document.querySelector("#ansChoices"); //show answer
 var timeEl = document.querySelector("#time"); //timer/countdown
-var quizShow = document.querySelector("#quizSection"); //question/choices displayed
+var quizShow = document.querySelector(".quizSection"); //question/choices displayed
 var highscoreDisplay = document.querySelector("#highscore"); //displaying highscore
 var initialsEl = document.querySelector("#initials"); //entering initials
 var resultEl = document.querySelector("#result"); //notif for whether question was answered correctly or not
 
 // start quiz button click
 function startQuiz() {
-  // startBtn.addEventListener("click", getQuestion);
-  startBtn.onclick = getQuestion;
+  console.log("startQuiz:", startQuiz);
+  quizShow.style.visibility = "visible"; //idk if these work
+  // highscoreDisplay.style.visibility = "visible"; //idk if these work
 
   quizShow.setAttribute("class", "show"); //idk if these work
-  highscoreDisplay.setAttribute("class", "hide"); //idk if these work
 
   //start timer //help from tutor
   timer = setInterval(tick, 1000);
@@ -28,6 +28,8 @@ function startQuiz() {
 
   getQuestion(); //invoking function further down
 }
+
+startBtn.addEventListener("click", startQuiz);
 
 function tick() {
   //start countdown
@@ -65,10 +67,10 @@ function getQuestion() {
 }
 
 function questionClick() {
-  // was it answered correctly ? if not, take off 15 seconds
+  // was it answered correctly ? if not, take off 10 seconds
   if (this.value !== queries[currentQ].answer) {
     //tutor lesson on . usage
-    time - 15; //does this need to be equals instead ?
+    time - 10; //does this need to be equals instead ?
 
     if (time < 0) {
       //less than for negative
@@ -108,6 +110,9 @@ function endQuiz() {
   final.textContent = time;
 
   quizShow.setAttribute("class", "hide"); //looked up something that this said it would make the questions/answers div disappear but im not sure if it works
+
+  quizShow.style.display = "none"; //idk if these work
+  highscoreDisplay.style.visibility = "visible"; //idk if these work
 }
 
 //save the score to local storage for highscore page
