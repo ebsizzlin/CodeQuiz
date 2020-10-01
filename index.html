@@ -15,36 +15,47 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- highscore & timer -->
+    <header>
+      <a href="highScore.html">Highscores</a>
+      <div id="timer">Time: <span id="time">0</span></div>
+    </header>
+
     <div class="jumbotron jumbotron-fluid">
-      <div class="container">
+      <!-- title and instructions -->
+      <div class="instructions">
         <h1 class="display-4">Coding Quiz Challenge</h1>
         <p class="lead">
           Try to answer the following code-related questions within the time
           limit. Keep in mind that incorrect answers will penalize your score /
           time by ten seconds!
         </p>
+        <!-- start button inside jumbotron -->
+        <div class="button-container">
+          <button id="startBtn">Start Quiz</button>
+        </div>
       </div>
     </div>
-    <div class="button-container">
-      <button id="start-quiz">Start Quiz</button>
+
+    <!-- section for questions and choices -->
+    <div class="quizSection">
+      <h2 id="questionDisplay">Question</h2>
     </div>
-    <br /><br />
-    <div class="choice-container">
-      <button type="button" class="btn btn-secondary btn-lg btn-block">
-        Option 1
-      </button>
-      <button type="button" class="btn btn-secondary btn-lg btn-block">
-        Option 2
-      </button>
-      <button type="button" class="btn btn-secondary btn-lg btn-block">
-        Option 3
-      </button>
-      <button type="button" class="btn btn-secondary btn-lg btn-block">
-        Option 4
-      </button>
+    <div id="ansChoices">
+      <button type="button" class="btn btn-secondary btn-lg btn-block"></button>
     </div>
-    <script src="script.js"></script>
+
+    <!-- high score -->
+    <div id="highScore">
+      <h2>All done!</h2>
+      <h3>Your final score is <span id="finalScore">0</span></h3>
+      <label for="initials-area">Enter initials:</label>
+      <input type="text" name="initialsEnter" maxlength="3" id="initials" />
+      <button id="submitBtn" type="submit">Submit</button>
+    </div>
+
     <script src="quiz.js"></script>
+    <script src="script.js"></script>
     <script src="highscore.js"></script>
   </body>
 </html>

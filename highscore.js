@@ -1,11 +1,13 @@
-var score
+function printHighscores() {
+  //store in local storage
+  var highscores = JSON.parse(window.localStorage.getItem("highscores"));
 
-var highscore
-initials []
-scores []
+  //put the scores in a list
+  highscores.forEach(function (score) {
+    var listNum = document.createElement("li");
+    listNum.textContent = score.initials + " - " + score.score;
+  });
+}
 
-function get scores
-
-function save scores
-
-// tag class / id on html in order to prompt initials and high score
+//invoke when highscores load
+printHighscores();
