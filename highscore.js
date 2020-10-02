@@ -1,6 +1,17 @@
-//*// this is a page of all the ways i've tried to make a highscore page, i think i'm making it too complicated -- i've gotten help from multiple people but im too confused so the sessions dont have enough time //*//
+//*// this is a page of all the ways i've tried to make a highscore page, i think i'm making it too complicated -- scheduled a meeting w tutor to get additional help next week //*//
 
 //i have no clue what's happening
+
+//click submit
+//store initials and score in local storage
+//show highscores list
+//show highscore list in greatest-least order
+//shouldn't calculate list unless there's another object -- error otherwise
+//clear highscores button
+//play again button
+
+//activities 21, 22, 23, 25, 28
+//does highscore info need to be on both highscore.js & script.js ?
 
 var initialsEl = document.querySelector("#initials"); //entering initials
 var submitBtn = document.querySelector("#submitBtn");
