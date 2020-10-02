@@ -27,15 +27,20 @@ THEN I can save my initials and score
 - timer works
 - start button works
 - questions cycle through
-- prompts use for initials, submit button leads to high score page (will maybe simplify into one?)
+- prompts use for initials, submit button leads to high scores
 
 ## Not Working
 
-- 404 page when submitting initials, works from VSC
-- way overcomplicated highscore pages, really have no idea what to do atm i confused a TA -- feel quite lost and frustrated on that one, maybe i've googled around too much and combined too many things
-- - used to show initials and score, but no longer does
-- choices for next question get appended onto the choices for the previous question, can't figure out how to clear
-- choices are meant to appear in a button from bootstrap but do not
+- i want my choices to appear in a bootstrap button but i dont know how
+- choices for next question r appended to choices of previous question
+- highscore page is a fail
+- - i've looked at maybe too much stack overflow and gotten help from TAs and a tutor but i've mostly confused myself and everyone else
+- highscore list used to show initials and score, but no longer does
+
+## To Do
+
+- rewrite highscore page entirely -- i have a separate highscore js, should i also have highscore code on the script ?
+- figure out choice buttons and appends
 
 ## Screenshots
 

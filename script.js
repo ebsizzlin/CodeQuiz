@@ -10,8 +10,10 @@ var ansChoices = document.querySelector("#ansChoices"); //show answer
 var timeEl = document.querySelector("#time"); //timer/countdown
 var quizShow = document.querySelector(".quizSection"); //question/choices displayed
 var highscoreDisplay = document.querySelector("#highscore"); //displaying highscore
+var finalScore = document.querySelector("#highscoreList"); //top scores page
 var initialsEl = document.querySelector("#initials"); //entering initials
 var resultEl = document.querySelector("#result"); //notif for whether question was answered correctly or not
+var submitBtn = document.querySelector("#submitBtn");
 // var ansBtn = document.querySelector("#ansBtn"); //bootstrap button div
 
 // start quiz button click
@@ -118,27 +120,48 @@ function endQuiz() {
   highscoreDisplay.style.visibility = "visible"; ////style.visibility "visible" or "hidden" is another way to do CSS styling, make it disappear until we summon it
 }
 
-//save the score to local storage for highscore page
+// rewriting high score code -- simplify
+
 function saveHighscore() {
-  var initials = initialsEl.value.trim(); //trim the spacing
-  //require initials to be inputted
-  var highscores = JSON.parse(window.localStorage.getItem("highscores")) || []; //array added later, backup if local storage not working
+  var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+  console.log("highscores:", highscores);
+  highscores.textContent = [];
 
-  //show user what they've entered after they submit it
-  var scoreNew = {
-    score: time,
-    initials: initials,
-  };
+  submitBtn.addEventListener("click", function (event) {
+    event.stopPropagation();
+    console.log("click");
 
-  scoreNew.textContent;
-  console.log("scoreNew:", scoreNew);
+    var scoreNew = {
+      score: time,
+      initials: initials,
+    };
 
-  //save it to the local storage
-  // highscores.setAttribute(scoreNew);
-  // window.localStorage.setItem("highscores", JSON.stringify(highscores)); //added JSON and stringify after consulting w classmates, not quite sure what it means yet
-
-  //send to highscore page/html
-  window.location.href = "highScore.html";
+    highscores.push(scoreNew);
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+  });
 }
 
 submitBtn.onclick = saveHighscore;
+saveHighscore.textContent = [];
+//save the score to local storage for highscore page
+// function saveHighscore() {
+//   var initials = initialsEl.value.trim(); //trim the spacing
+//   //require initials to be inputted
+//   var highscores = JSON.parse(window.localStorage.getItem("highscores")) || []; //array added later, backup if local storage not working
+
+//   //show user what they've entered after they submit it
+//   var scoreNew = {
+//     score: time,
+//     initials: initials,
+//   };
+
+//   scoreNew.textContent;
+//   console.log("scoreNew:", scoreNew);
+
+//   //save it to the local storage
+//   // highscores.setAttribute(scoreNew);
+//   // window.localStorage.setItem("highscores", JSON.stringify(highscores)); //added JSON and stringify after consulting w classmates, not quite sure what it means yet
+
+//   //send to highscore page/html
+//   window.location.href = "highScore.html";
+// }
