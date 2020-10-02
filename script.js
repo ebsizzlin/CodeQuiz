@@ -12,17 +12,17 @@ var quizShow = document.querySelector(".quizSection"); //question/choices displa
 var highscoreDisplay = document.querySelector("#highscore"); //displaying highscore
 var initialsEl = document.querySelector("#initials"); //entering initials
 var resultEl = document.querySelector("#result"); //notif for whether question was answered correctly or not
+// var ansBtn = document.querySelector("#ansBtn"); //bootstrap button div
 
 // start quiz button click
 function startQuiz() {
   console.log("startQuiz:", startQuiz);
-  quizShow.style.visibility = "visible"; //idk if these work
-  // highscoreDisplay.style.visibility = "visible"; //idk if these work
+  quizShow.style.visibility = "visible"; //style.visibility "visible" or "hidden" is another way to do CSS styling, make it disappear until we summon it
 
-  quizShow.setAttribute("class", "show"); //idk if these work
+  quizShow.setAttribute("class", "show"); //show the Qs and choices
 
   //start timer //help from tutor
-  timer = setInterval(tick, 1000);
+  timer = setInterval(count, 1000);
   //display timer text
   timeEl.textContent = time;
 
@@ -31,7 +31,7 @@ function startQuiz() {
 
 startBtn.addEventListener("click", startQuiz);
 
-function tick() {
+function count() {
   //start countdown
   time--;
   //display timer text
@@ -40,24 +40,27 @@ function tick() {
   //end quiz if time is 0
   if (time <= 0) {
     //added less than for negative
-    endQuiz();
+    endQuiz(); //invoking endQuiz function from later one here
   }
 }
 
 function getQuestion() {
   //get first question
-  var currentQuestion = queries[currentQ];
+  var currentQuestion = queries[currentQ]; // never invoked ???
 
   //get the right question title cycled through
-  var titleEl = document.getElementById("questionDisplay");
-  titleEl.textContent = currentQ.title;
-  questionDisplay.textContent = queries[0].question;
+  var qEl = document.getElementById("questionDisplay");
+  qEl.textContent = currentQ.title;
+  questionDisplay.textContent = queries[currentQ].question;
 
-  //for loop for choices
-  for (var i = 0; i < queries[0].choices.length; i++) {
+  //clearing choice button contents so they don't show up on the next question
+  // document.getElementById("choices").innerHTML = "";
+
+  //setting answers
+  for (var i = 0; i < queries[currentQ].choices.length; i++) {
     var choiceBtn = document.createElement("button");
-    choiceBtn.setAttribute("value", queries[0].choices[i]);
-    choiceBtn.textContent = queries[0].choices[i];
+    choiceBtn.setAttribute("value", queries[currentQ].choices[i]);
+    choiceBtn.textContent = queries[currentQ].choices[i];
 
     //click listeners
     choiceBtn.onclick = questionClick; // refering to next function
@@ -86,8 +89,8 @@ function questionClick() {
     resultEl.textContent = "Correct";
   }
 
-  //going to following question after being alerted and time potential drops
-  currentQ++; //tutor helped w what these smaller notation mean
+  //going to following question after being alerted and time potential drops, have to increment
+  currentQ++;
 
   // if statement for stopping when there aren't anymore questions
   if (currentQ === queries.length) {
@@ -109,10 +112,10 @@ function endQuiz() {
   var final = document.querySelector("#finalScore");
   final.textContent = time;
 
-  quizShow.setAttribute("class", "hide"); //looked up something that this said it would make the questions/answers div disappear but im not sure if it works
+  quizShow.setAttribute("class", "hide"); //sure
 
-  quizShow.style.display = "none"; //idk if these work
-  highscoreDisplay.style.visibility = "visible"; //idk if these work
+  quizShow.style.display = "none"; ////style.display "none" is another way to do CSS styling, this erases it so something else can take the space it was taking up
+  highscoreDisplay.style.visibility = "visible"; ////style.visibility "visible" or "hidden" is another way to do CSS styling, make it disappear until we summon it
 }
 
 //save the score to local storage for highscore page
@@ -127,9 +130,12 @@ function saveHighscore() {
     initials: initials,
   };
 
+  scoreNew.textContent;
+  console.log("scoreNew:", scoreNew);
+
   //save it to the local storage
-  highscores.push(scoreNew);
-  window.localStorage.setItem("highscores", JSON.stringify(highscores)); //added JSON and stringify after consulting w classmates, not quite sure what it means yet
+  // highscores.setAttribute(scoreNew);
+  // window.localStorage.setItem("highscores", JSON.stringify(highscores)); //added JSON and stringify after consulting w classmates, not quite sure what it means yet
 
   //send to highscore page/html
   window.location.href = "highScore.html";
