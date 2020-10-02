@@ -27,15 +27,14 @@ THEN I can save my initials and score
 - timer works
 - start button works
 - questions cycle through
-- prompts use for initials, submit button leads to high scores
+- prompts use for initials
 
 ## Not Working
 
 - i want my choices to appear in a bootstrap button but i dont know how
 - choices for next question r appended to choices of previous question
 - highscore page is a fail
-- - i've looked at maybe too much stack overflow and gotten help from TAs and a tutor but i've mostly confused myself and everyone else
-- highscore list used to show initials and score, but no longer does
+- submit button stopped working
 
 ## To Do
 

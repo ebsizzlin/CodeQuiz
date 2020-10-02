@@ -10,10 +10,8 @@ var ansChoices = document.querySelector("#ansChoices"); //show answer
 var timeEl = document.querySelector("#time"); //timer/countdown
 var quizShow = document.querySelector(".quizSection"); //question/choices displayed
 var highscoreDisplay = document.querySelector("#highscore"); //displaying highscore
-var finalScore = document.querySelector("#highscoreList"); //top scores page
-var initialsEl = document.querySelector("#initials"); //entering initials
 var resultEl = document.querySelector("#result"); //notif for whether question was answered correctly or not
-var submitBtn = document.querySelector("#submitBtn");
+
 // var ansBtn = document.querySelector("#ansBtn"); //bootstrap button div
 
 // start quiz button click
@@ -60,7 +58,7 @@ function getQuestion() {
 
   //setting answers
   for (var i = 0; i < queries[currentQ].choices.length; i++) {
-    var choiceBtn = document.createElement("button");
+    var choiceBtn = document.createElement("ansChoices");
     choiceBtn.setAttribute("value", queries[currentQ].choices[i]);
     choiceBtn.textContent = queries[currentQ].choices[i];
 
@@ -68,6 +66,10 @@ function getQuestion() {
     choiceBtn.onclick = questionClick; // refering to next function
     //append so it shows up on page
     ansChoices.appendChild(choiceBtn);
+
+    //*// choices aren't appearing in bootstrap button //*//
+    //*// every question's choices are appending to the next question's choices //*//
+    //*// to try: how to clear each round without deleting? am i using boostrap wrong? //*//
   }
 }
 
@@ -120,48 +122,10 @@ function endQuiz() {
   highscoreDisplay.style.visibility = "visible"; ////style.visibility "visible" or "hidden" is another way to do CSS styling, make it disappear until we summon it
 }
 
-// rewriting high score code -- simplify
-
-function saveHighscore() {
-  var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
-  console.log("highscores:", highscores);
-  highscores.textContent = [];
-
-  submitBtn.addEventListener("click", function (event) {
-    event.stopPropagation();
-    console.log("click");
-
-    var scoreNew = {
-      score: time,
-      initials: initials,
-    };
-
-    highscores.push(scoreNew);
-    localStorage.setItem("highscores", JSON.stringify(highscores));
-  });
-}
-
-submitBtn.onclick = saveHighscore;
-saveHighscore.textContent = [];
-//save the score to local storage for highscore page
-// function saveHighscore() {
-//   var initials = initialsEl.value.trim(); //trim the spacing
-//   //require initials to be inputted
-//   var highscores = JSON.parse(window.localStorage.getItem("highscores")) || []; //array added later, backup if local storage not working
-
-//   //show user what they've entered after they submit it
-//   var scoreNew = {
-//     score: time,
-//     initials: initials,
-//   };
-
-//   scoreNew.textContent;
-//   console.log("scoreNew:", scoreNew);
-
-//   //save it to the local storage
-//   // highscores.setAttribute(scoreNew);
-//   // window.localStorage.setItem("highscores", JSON.stringify(highscores)); //added JSON and stringify after consulting w classmates, not quite sure what it means yet
-
-//   //send to highscore page/html
-//   window.location.href = "highScore.html";
-// }
+//click submit
+//store initials and score in local storage
+//show highscores list
+//show highscore list in greatest-least order
+//shouldn't calculate list unless there's another object -- error otherwise
+//clear highscores button
+//play again button

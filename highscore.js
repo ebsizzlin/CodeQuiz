@@ -1,29 +1,86 @@
-var highScore = document.querySelector("#highscores");
-var clear = document.querySelector("#clearBtn");
-var playAgain = document.querySelector("#againBtn");
+//*// this is a page of all the ways i've tried to make a highscore page, i think i'm making it too complicated -- i've gotten help from multiple people but im too confused so the sessions dont have enough time //*//
 
-// Event listener to clear scores
-clear.addEventListener("click", function () {
-  localStorage.clear();
-  location.reload();
-});
-// Retreives local stroage
-var allScores = localStorage.getItem("allScores");
-allScores = JSON.parse(allScores);
+//i have no clue what's happening
 
-if (allScores !== null) {
-  for (var i = 0; i < allScores.length; i++) {
-    var createLi = document.createElement("li");
-    createLi.textContent = allScores[i].initials + " " + allScores[i].score;
-    highScore.appendChild(createLi);
-  }
+var initialsEl = document.querySelector("#initials"); //entering initials
+var submitBtn = document.querySelector("#submitBtn");
+
+// rewriting high score code -- simplify
+function saveHighscore() {
+  var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
+  console.log("highscores:", highscores);
+  highscores.textContent = [];
+
+  submitBtn.addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log("click");
+
+    var scoreNew = {
+      score: time,
+      initials: initials,
+    };
+
+    highscores.push(scoreNew);
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+  });
 }
-// Event listener to move to index page
-playAgain.addEventListener("click", function () {
-  window.location.replace("index.html");
-});
 
-// //
+submitBtn.onclick = saveHighscore;
+saveHighscore.textContent = [];
+
+/////////////////////////////
+
+//save the score to local storage for highscore page
+// function saveHighscore() {
+//   var initials = initialsEl.value.trim(); //trim the spacing
+//   //require initials to be inputted
+//   var highscores = JSON.parse(window.localStorage.getItem("highscores")) || []; //array added later, backup if local storage not working
+
+//   //show user what they've entered after they submit it
+//   var scoreNew = {
+//     score: time,
+//     initials: initials,
+//   };
+
+//   scoreNew.textContent;
+//   console.log("scoreNew:", scoreNew);
+
+//   //save it to the local storage
+//   // highscores.setAttribute(scoreNew);
+//   // window.localStorage.setItem("highscores", JSON.stringify(highscores)); //added JSON and stringify after consulting w classmates, not quite sure what it means yet
+
+//   //send to highscore page/html
+//   window.location.href = "highScore.html";
+// }
+
+/////////////////////////
+
+// var highScore = document.querySelector("#highscores");
+// var clear = document.querySelector("#clearBtn");
+// var playAgain = document.querySelector("#againBtn");
+
+//clear scores
+// clear.addEventListener("click", function () {
+//   localStorage.clear();
+//   location.reload();
+// });
+// //bring back from local stroage
+// var allScores = localStorage.getItem("allScores");
+// allScores = JSON.parse(allScores);
+
+// if (allScores !== null) {
+//   for (var i = 0; i < allScores.length; i++) {
+//     var createLi = document.createElement("li");
+//     createLi.textContent = allScores[i].initials + " " + allScores[i].score;
+//     highScore.appendChild(createLi);
+//   }
+// // }
+// // //
+// playAgain.addEventListener("click", function () {
+//   window.location.replace("index.html");
+// });
+
+/////////////////////////
 
 // var clearBtn = document.querySelector("#clearBtn"); //clear button
 
