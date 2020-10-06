@@ -1,30 +1,17 @@
-//*// this is a page of all the ways i've tried to make a highscore page, i think i'm making it too complicated -- scheduled a meeting w tutor to get additional help next week //*//
-
-//i have no clue what's happening
-
-//click submit
-//store initials and score in local storage
-//show highscores list
-//show highscore list in greatest-least order
-//shouldn't calculate list unless there's another object -- error otherwise
-//clear highscores button
-//play again button
-
-//activities 21, 22, 23, 25, 28
-//does highscore info need to be on both highscore.js & script.js ?
-
 var initialsEl = document.querySelector("#initials"); //entering initials
-var submitBtn = document.querySelector("#submitBtn");
+var submitBtn = document.querySelector("#submitBtn"); //button
+var hideHighScore = document.querySelector("#hidehighscore"); //hs hide button
+var showHighScore = document.querySelector("#showhighscore"); //hs show button
+var highScoreList = document.querySelector("#highscoreList"); //list of hs + again / clear buttons
 
-// rewriting high score code -- simplify
 function saveHighscore() {
+
+
+
+
   var highscores = JSON.parse(localStorage.getItem("highscores")) || [];
   console.log("highscores:", highscores);
   highscores.textContent = [];
-
-  submitBtn.addEventListener("click", function (event) {
-    event.preventDefault();
-    console.log("click");
 
     var scoreNew = {
       score: time,
@@ -36,9 +23,26 @@ function saveHighscore() {
   });
 }
 
-submitBtn.onclick = saveHighscore;
-saveHighscore.textContent = [];
+//   window.localStorage.setItem("highscores", "{}"); //'{}' stringifying an object (how it was made on script.js)
+//   // window.localStorage.setItem("highscores", JSON.stringify(highscores)); //added JSON and stringify after consulting w classmates, not quite sure what it means yet
 
+function showHigh() {
+  showHighScore.setAttribute("class", "hide");
+  highHighScore.setAttribute("class", "show");
+  highScoreList.setAttribute("class", "show");
+}
+
+function hideHigh() {
+  hideHighScore.setAttribute("class", "hide");
+  showHighScore.setAttribute("class", "show");
+  highScoreList.setAttribute("class", "hide");
+}
+
+showHighScore.addEventListener("click", showHigh);
+hideHighScore.addEventListener("click", hideHigh);
+
+submitBtn.addEventListener("click", saveHighscore);
+saveHighscore.textContent = [];
 /////////////////////////////
 
 //save the score to local storage for highscore page
@@ -130,3 +134,11 @@ saveHighscore.textContent = [];
 // }
 
 // clearBtn.addEventListener("click", clear);
+
+// for (var i = 0; i < currentQuestion.choices.length; i++) {
+//   var choiceBtn = document.createElement("button"); //<button></button>
+//   choiceBtn.setAttribute("type", "button"); //<button type="button"></button>
+//   choiceBtn.setAttribute("class", "btn btn-secondary btn-lg btn-block");
+//   choiceBtn.setAttribute("value", currentQuestion.choices[i]);
+
+//   choiceBtn.textContent = currentQuestion.choices[i];

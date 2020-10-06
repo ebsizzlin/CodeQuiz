@@ -3,3 +3,11 @@ body {
   padding: 25px;
   background-color: lightblue;
 }
+
+.hide {
+  display: none;
+}
+
+.show {
+  display: contents;
+}

@@ -12,11 +12,7 @@ var quizShow = document.querySelector(".quizSection"); //question/choices displa
 var highscoreDisplay = document.querySelector("#highscore"); //displaying highscore
 var resultEl = document.querySelector("#result"); //notif for whether question was answered correctly or not
 
-// var ansBtn = document.querySelector("#ansBtn"); //bootstrap button div
-
-// start quiz button click
 function startQuiz() {
-  console.log("startQuiz:", startQuiz);
   quizShow.style.visibility = "visible"; //style.visibility "visible" or "hidden" is another way to do CSS styling, make it disappear until we summon it
 
   quizShow.setAttribute("class", "show"); //show the Qs and choices
@@ -28,8 +24,6 @@ function startQuiz() {
 
   getQuestion(); //invoking function further down
 }
-
-startBtn.addEventListener("click", startQuiz);
 
 function count() {
   //start countdown
@@ -46,38 +40,43 @@ function count() {
 
 function getQuestion() {
   //get first question
-  var currentQuestion = queries[currentQ]; // never invoked ???
+  var currentQuestion = queries[currentQ];
 
   //get the right question title cycled through
-  var qEl = document.getElementById("questionDisplay");
-  qEl.textContent = currentQ.title;
-  questionDisplay.textContent = queries[currentQ].question;
+  questionDisplay.textContent = currentQuestion.question;
 
   //clearing choice button contents so they don't show up on the next question
-  // document.getElementById("choices").innerHTML = "";
+  ansChoices.innerHTML = "";
 
   //setting answers
-  for (var i = 0; i < queries[currentQ].choices.length; i++) {
-    var choiceBtn = document.createElement("ansChoices");
-    choiceBtn.setAttribute("value", queries[currentQ].choices[i]);
-    choiceBtn.textContent = queries[currentQ].choices[i];
+  for (var i = 0; i < currentQuestion.choices.length; i++) {
+    var choiceBtn = document.createElement("button"); //<button></button>
+    choiceBtn.setAttribute("type", "button"); //<button type="button"></button>
+    choiceBtn.setAttribute("class", "btn btn-secondary btn-lg btn-block");
+    choiceBtn.setAttribute("value", currentQuestion.choices[i]);
+
+    choiceBtn.textContent = currentQuestion.choices[i];
+
+    // <button
+    //  type="button"
+    //  class="btn btn-secondary btn-lg btn-block"
+    // ></button>
 
     //click listeners
     choiceBtn.onclick = questionClick; // refering to next function
     //append so it shows up on page
     ansChoices.appendChild(choiceBtn);
-
-    //*// choices aren't appearing in bootstrap button //*//
-    //*// every question's choices are appending to the next question's choices //*//
-    //*// to try: how to clear each round without deleting? am i using boostrap wrong? //*//
   }
 }
 
-function questionClick() {
+function questionClick(event) {
   // was it answered correctly ? if not, take off 10 seconds
+
+  console.log("click", event.target);
+  console.log("this", this);
   if (this.value !== queries[currentQ].answer) {
     //tutor lesson on . usage
-    time - 10; //does this need to be equals instead ?
+    time -= 10; //does this need to be equals instead ?
 
     if (time < 0) {
       //less than for negative
@@ -121,6 +120,8 @@ function endQuiz() {
   quizShow.style.display = "none"; ////style.display "none" is another way to do CSS styling, this erases it so something else can take the space it was taking up
   highscoreDisplay.style.visibility = "visible"; ////style.visibility "visible" or "hidden" is another way to do CSS styling, make it disappear until we summon it
 }
+
+startBtn.addEventListener("click", startQuiz);
 
 //click submit
 //store initials and score in local storage
