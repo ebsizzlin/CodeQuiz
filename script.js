@@ -11,6 +11,7 @@ var timeEl = document.querySelector("#time"); //timer/countdown
 var quizShow = document.querySelector(".quizSection"); //question/choices displayed
 var highscoreDisplay = document.querySelector("#highscore"); //displaying highscore
 var resultEl = document.querySelector("#result"); //notif for whether question was answered correctly or not
+var submitBtn = document.querySelector("#submitBtn"); //submit hs btn
 
 function startQuiz() {
   quizShow.style.visibility = "visible"; //style.visibility "visible" or "hidden" is another way to do CSS styling, make it disappear until we summon it
@@ -21,6 +22,8 @@ function startQuiz() {
   timer = setInterval(count, 1000);
   //display timer text
   timeEl.textContent = time;
+
+  startBtn.setAttribute("class", "hide");
 
   getQuestion(); //invoking function further down
 }
@@ -122,3 +125,7 @@ function endQuiz() {
 }
 
 startBtn.addEventListener("click", startQuiz);
+//how to also save initials/score when clicking submit ?
+submitBtn.addEventListener("click", function () {
+  document.location.href = "highscore.html";
+});

@@ -1,41 +1,30 @@
-var initialsEl = document.querySelector("#initials"); //entering initials
-var submitBtn = document.querySelector("#submitBtn"); //button
-var hideHighScore = document.querySelector("#hidehighscore"); //hs hide button
-var showHighScore = document.querySelector("#showhighscore"); //hs show button
-var highScoreList = document.querySelector("#highscoreList"); //list of hs + again / clear buttons
+var playAgain = document.querySelector("#againBtn");
+var clearBtn = document.querySelector("#clearBtn");
 
+//how to display score/initials once it comes w the submitBtn from script.js
 function saveHighscore() {
-  var highscores = document.getElementById("highscores");
-  localStorage.setItem("highscores", JSON.stringify(highscores));
+  var highscores = JSON.parse(window.localStorage.getItem("highscores"));
 
-  highscores.textContent = [];
+  highscores.forEach(function (scoreNew) {
+    //putting the scores in a list
+    var scoreList = document.createElement("li");
+    scoreList.textContent = scoreNew.initials + " - " + scoreNew.score;
+
+    var appearList = document.getElementById("highscores");
+    appearList.appendChild(li);
+  });
 
   var scoreNew = {
     score: "#finalScore",
-    initials: "#initials", // trim ?
+    initials: initials.value.trim(),
   };
   console.log("scoreNew:", scoreNew);
-
-  // highscores.push(scoreNew);
 }
 
-//   window.localStorage.setItem("highscores", "{}"); //'{}' stringifying an object (how it was made on script.js)
-//   // window.localStorage.setItem("highscores", JSON.stringify(highscores)); //added JSON and stringify after consulting w classmates, not quite sure what it means yet
+// window.localStorage.getItem("highscores", "{}"); //'{}' stringifying an object (how it was made on script.js)
 
-function showHigh() {
-  showHighScore.setAttribute("class", "hide");
-  highHighScore.setAttribute("class", "show");
-  highScoreList.setAttribute("class", "show");
-}
-
-function hideHigh() {
-  hideHighScore.setAttribute("class", "hide");
-  showHighScore.setAttribute("class", "show");
-  highScoreList.setAttribute("class", "hide");
-}
-
-showHighScore.addEventListener("click", showHigh);
-hideHighScore.addEventListener("click", hideHigh);
-
-submitBtn.addEventListener("click", saveHighscore);
-saveHighscore.textContent = [];
+// submitBtn.addEventListener("click", saveHighscore);
+playAgain.addEventListener("click", function () {
+  document.location.href = "index.html";
+});
+clearBtn.addEventListener("click", clear);
