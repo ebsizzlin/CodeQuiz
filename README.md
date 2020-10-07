@@ -1,24 +1,8 @@
-# CodeQuiz
+# CodeQuiz - 4
 
-## User Story
+## Description
 
-AS A coding bootcamp student
-I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-SO THAT I can gauge my progress compared to my peers
-
-## Acceptance Criteria
-
-GIVEN I am taking a code quiz
-WHEN I click the start button
-THEN a timer starts and I am presented with a question
-WHEN I answer a question
-THEN I am presented with another question
-WHEN I answer a question incorrectly
-THEN time is subtracted from the clock
-WHEN all questions are answered or the timer reaches 0
-THEN the game is over
-WHEN the game is over
-THEN I can save my initials and score
+A timed coding quiz made with JS that stores highscores in local storage.
 
 ## Completed
 
@@ -26,30 +10,16 @@ THEN I can save my initials and score
 - visible and hidden settings make it visually attractive
 - timer works
 - start button works
-- questions cycle through
-- prompts use for initials
-
-## Not Working
-
-- i want my choices to appear in a bootstrap button but i dont know how
-- choices for next question r appended to choices of previous question
-- highscore page is a fail
-- submit button stopped working
-
-## To Do
-
-- rewrite highscore page entirely -- i have a separate highscore js, should i also have highscore code on the script ?
-- figure out choice buttons and appends
+- questions and choices cycle through
+- alerted if right or wrong, time deducted
+- prompt for initials/score appears
 
 ## Screenshots
 
-<img width="1123" alt="Screen Shot 2020-10-01 at 11 33 01 PM" src="https://user-images.githubusercontent.com/70185995/94885541-79a0d900-043e-11eb-96b7-0472377ea7c1.png">
-
-<img width="1126" alt="Screen Shot 2020-10-01 at 11 32 52 PM" src="https://user-images.githubusercontent.com/70185995/94885544-7c033300-043e-11eb-8fbf-5694438506f0.png">
-
-<img width="1125" alt="Screen Shot 2020-10-01 at 11 32 42 PM" src="https://user-images.githubusercontent.com/70185995/94885549-7d346000-043e-11eb-86c7-99dcce00a44a.png">
-
-<img width="1123" alt="Screen Shot 2020-10-01 at 11 32 34 PM" src="https://user-images.githubusercontent.com/70185995/94885551-7e658d00-043e-11eb-9972-c4d71948fa12.png">
+<img width="1166" alt="Screen Shot 2020-10-06 at 10 09 15 PM" src="https://user-images.githubusercontent.com/70185995/95279687-551f7500-0821-11eb-966d-9874ecad47c3.png">
+<img width="1168" alt="Screen Shot 2020-10-06 at 10 09 27 PM" src="https://user-images.githubusercontent.com/70185995/95279689-5650a200-0821-11eb-813b-d797c4772bc4.png">
+<img width="1168" alt="Screen Shot 2020-10-06 at 10 09 36 PM" src="https://user-images.githubusercontent.com/70185995/95279690-5781cf00-0821-11eb-863c-38658f498e22.png">
+<img width="1169" alt="Screen Shot 2020-10-06 at 10 09 46 PM" src="https://user-images.githubusercontent.com/70185995/95279691-581a6580-0821-11eb-840a-178c025312f3.png">
 
 ## Link
 

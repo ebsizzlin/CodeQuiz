@@ -4,6 +4,7 @@ body {
   background-color: lightblue;
 }
 
+/* more convenient ways of hiding/showing objects */
 .hide {
   display: none;
 }

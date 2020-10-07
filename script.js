@@ -122,11 +122,3 @@ function endQuiz() {
 }
 
 startBtn.addEventListener("click", startQuiz);
-
-//click submit
-//store initials and score in local storage
-//show highscores list
-//show highscore list in greatest-least order
-//shouldn't calculate list unless there's another object -- error otherwise
-//clear highscores button
-//play again button
