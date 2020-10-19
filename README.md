@@ -14,6 +14,11 @@ A timed coding quiz made with JS that stores highscores in local storage.
 - alerted if right or wrong, time deducted
 - prompt for initials/score appears
 
+## To Fix / Add
+
+- says that highscore.appendChild(scoreList); is not a function & wont display scores
+- change highscore # from countdown time to a points system
+
 ## Screenshots
 
 <img width="1166" alt="Screen Shot 2020-10-06 at 10 09 15 PM" src="https://user-images.githubusercontent.com/70185995/95279687-551f7500-0821-11eb-966d-9874ecad47c3.png">

@@ -2,6 +2,7 @@
 var currentQ = 0; //what question we're currently on //added later
 var time = queries.length * 10; //the length of time given to a question/taken
 var timer; //the timer en general
+//var score
 
 // ref variables
 var startBtn = document.querySelector("#startBtn"); //start button
@@ -93,6 +94,7 @@ function questionClick(event) {
     resultEl.textContent = "Wrong";
   } else {
     resultEl.textContent = "Correct";
+    //score += 4
   }
 
   //going to following question after being alerted and time potential drops, have to increment
@@ -116,16 +118,38 @@ function endQuiz() {
 
   // display player's final score
   var final = document.querySelector("#finalScore");
-  final.textContent = time;
+  final.textContent = time; //change to 'final'
 
   quizShow.setAttribute("class", "hide"); //sure
 
   quizShow.style.display = "none"; ////style.display "none" is another way to do CSS styling, this erases it so something else can take the space it was taking up
   highscoreDisplay.style.visibility = "visible"; ////style.visibility "visible" or "hidden" is another way to do CSS styling, make it disappear until we summon it
 }
+//[] for empty array
+function saveHighscore() {
+  //parse turns it into js
+  var highscores = JSON.parse(window.localStorage.getItem('highscore')) || [];
+
+  var scoreNew = {
+    score: time,
+    initials: initials.value.trim(),
+  };
+
+  //pushing the array
+  highscores.push(scoreNew);
+  window.localStorage.setItem('highscore', JSON.stringify(highscores))
+  //(key, item)
+  //stringify turns it from an array to a string
+
+  console.log("scoreNew:", scoreNew);
+}
 
 startBtn.addEventListener("click", startQuiz);
 //how to also save initials/score when clicking submit ?
 submitBtn.addEventListener("click", function () {
+  saveHighscore();
   document.location.href = "highscore.html";
 });
+
+//order the highscores
+//css cleanup the highscore list
