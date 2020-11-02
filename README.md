@@ -1,23 +1,13 @@
-# CodeQuiz - 4
+# Code Quiz
 
 ## Description
 
 A timed coding quiz made with JS that stores highscores in local storage.
+https://ebsizzlin.github.io/CodeQuiz/
 
-## Completed
+## Tech Used
 
-- html and css designed
-- visible and hidden settings make it visually attractive
-- timer works
-- start button works
-- questions and choices cycle through
-- alerted if right or wrong, time deducted
-- prompt for initials/score appears
-
-## To Fix / Add
-
-- says that highscore.appendChild(scoreList); is not a function & wont display scores
-- change highscore # from countdown time to a points system
+HTML, CSS (Bootstrap), JavaScript
 
 ## Screenshots
 
@@ -26,6 +16,7 @@ A timed coding quiz made with JS that stores highscores in local storage.
 <img width="1168" alt="Screen Shot 2020-10-06 at 10 09 36 PM" src="https://user-images.githubusercontent.com/70185995/95279690-5781cf00-0821-11eb-863c-38658f498e22.png">
 <img width="1169" alt="Screen Shot 2020-10-06 at 10 09 46 PM" src="https://user-images.githubusercontent.com/70185995/95279691-581a6580-0821-11eb-840a-178c025312f3.png">
 
-## Link
+## To Fix / Add
 
-https://ebsizzlin.github.io/CodeQuiz/
+- says that highscore.appendChild(scoreList); is not a function & wont display scores
+- change highscore # from countdown time to a points system
